@@ -11,6 +11,7 @@
 #include <xc.h>
 #include "types.h"
 #include "Tasking.h"
+#include "UartHal/UartHal.h"
 
 #endif	/* MAIN_H */
 
