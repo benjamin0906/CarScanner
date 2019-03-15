@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=src/main.c src/Tasking/Tasking.c src/UartHal/UartHal.c
+SOURCEFILES_QUOTED_IF_SPACED=src/Tasking/Tasking.c src/UartHal/UartHal.c src/main.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/src/main.p1 ${OBJECTDIR}/src/Tasking/Tasking.p1 ${OBJECTDIR}/src/UartHal/UartHal.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/src/main.p1.d ${OBJECTDIR}/src/Tasking/Tasking.p1.d ${OBJECTDIR}/src/UartHal/UartHal.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/src/Tasking/Tasking.p1 ${OBJECTDIR}/src/UartHal/UartHal.p1 ${OBJECTDIR}/src/main.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/src/Tasking/Tasking.p1.d ${OBJECTDIR}/src/UartHal/UartHal.p1.d ${OBJECTDIR}/src/main.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/src/main.p1 ${OBJECTDIR}/src/Tasking/Tasking.p1 ${OBJECTDIR}/src/UartHal/UartHal.p1
+OBJECTFILES=${OBJECTDIR}/src/Tasking/Tasking.p1 ${OBJECTDIR}/src/UartHal/UartHal.p1 ${OBJECTDIR}/src/main.p1
 
 # Source Files
-SOURCEFILES=src/main.c src/Tasking/Tasking.c src/UartHal/UartHal.c
+SOURCEFILES=src/Tasking/Tasking.c src/UartHal/UartHal.c src/main.c
 
 
 CFLAGS=
@@ -93,14 +93,6 @@ MP_PROCESSOR_OPTION=18F2480
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/src/main.p1: src/main.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/src" 
-	@${RM} ${OBJECTDIR}/src/main.p1.d 
-	@${RM} ${OBJECTDIR}/src/main.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"src" -I"src/Tasking" -I"src/UartHal" -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/src/main.p1 src/main.c 
-	@-${MV} ${OBJECTDIR}/src/main.d ${OBJECTDIR}/src/main.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/src/main.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
 ${OBJECTDIR}/src/Tasking/Tasking.p1: src/Tasking/Tasking.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/src/Tasking" 
 	@${RM} ${OBJECTDIR}/src/Tasking/Tasking.p1.d 
@@ -117,15 +109,15 @@ ${OBJECTDIR}/src/UartHal/UartHal.p1: src/UartHal/UartHal.c  nbproject/Makefile-$
 	@-${MV} ${OBJECTDIR}/src/UartHal/UartHal.d ${OBJECTDIR}/src/UartHal/UartHal.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/src/UartHal/UartHal.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-else
 ${OBJECTDIR}/src/main.p1: src/main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/src" 
 	@${RM} ${OBJECTDIR}/src/main.p1.d 
 	@${RM} ${OBJECTDIR}/src/main.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"src" -I"src/Tasking" -I"src/UartHal" -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/src/main.p1 src/main.c 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"src" -I"src/Tasking" -I"src/UartHal" -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/src/main.p1 src/main.c 
 	@-${MV} ${OBJECTDIR}/src/main.d ${OBJECTDIR}/src/main.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/src/main.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+else
 ${OBJECTDIR}/src/Tasking/Tasking.p1: src/Tasking/Tasking.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/src/Tasking" 
 	@${RM} ${OBJECTDIR}/src/Tasking/Tasking.p1.d 
@@ -141,6 +133,14 @@ ${OBJECTDIR}/src/UartHal/UartHal.p1: src/UartHal/UartHal.c  nbproject/Makefile-$
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"src" -I"src/Tasking" -I"src/UartHal" -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/src/UartHal/UartHal.p1 src/UartHal/UartHal.c 
 	@-${MV} ${OBJECTDIR}/src/UartHal/UartHal.d ${OBJECTDIR}/src/UartHal/UartHal.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/src/UartHal/UartHal.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/src/main.p1: src/main.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/main.p1.d 
+	@${RM} ${OBJECTDIR}/src/main.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"src" -I"src/Tasking" -I"src/UartHal" -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/src/main.p1 src/main.c 
+	@-${MV} ${OBJECTDIR}/src/main.d ${OBJECTDIR}/src/main.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/src/main.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 

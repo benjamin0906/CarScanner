@@ -11,6 +11,7 @@
         </logicalFolder>
         <logicalFolder name="UartHal" displayName="UartHal" projectFiles="true">
           <itemPath>src/UartHal/UartHal.h</itemPath>
+          <itemPath>UartHal_Types.h</itemPath>
         </logicalFolder>
         <itemPath>src/main.h</itemPath>
         <itemPath>src/types.h</itemPath>

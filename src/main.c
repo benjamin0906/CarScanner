@@ -23,18 +23,7 @@ void __interrupt(high_priority) ISRHandler(void)
 void __interrupt(low_priority) ISRHandler2(void)
 {
     LATA ^= 0b100;
-    /* UART receive interrupt check */
-    if((PIR1 & 0b00100000) != 0)
-    {
-        uint8 asd;
-        MyGetc(&asd);
-    }
-    
-    /* UART tx buffer empty interrupt check */
-    if(((PIE1 & 0b00010000) != 0) && ((PIR1 & 0b00010000) != 0))
-    {
-        
-    }
+    UartHal_Handler();
     
     
 }
