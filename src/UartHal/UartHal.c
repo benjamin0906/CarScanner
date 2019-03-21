@@ -20,13 +20,16 @@ void UartHal_InitUart(void)
     TRISC= 0b10000000;
     PIR1 &= 0b11011111;
     PIE1 |= 0b00100000;
-    IPR1 &= 0b11011111;
+    IPR1 &= 0b11001111;
 }
 
-void MyPutc(uint8 data)
+void MyPutc(uint8 *data, uint8 Amount)
 {
-    while((TXSTA&10)==0);
-    TXREG=data;
+    UartHal.TxIndex=0;
+    uint8 looper=0;
+    for(looper = 0; looper< Amount; looper++) UartHal.TxBuff[looper] = data[looper];
+    UartHal.TxAmount=Amount;
+    PIE1 |= 0b00010000;
 }
 
 void MyGetc(uint8* data)
@@ -47,18 +50,18 @@ void UartHal_Handler(void)
             if((received >= 0x81) && (received <= 0x87))
             {
                 /* Besides this of the data bytes 4 other bytes arrive too. The first byte (with size), src and dst adresses, and checksum. */
-                UartHal.RxArrivedAmount = received - 0x80 + 4;
+                UartHal.RxArrivedAmount = received - 0x80;
                 UartHal.RxBuff[UartHal.RxIndex++] = received;
             }
         }
         else
         {
-            if((UartHal.RxIndex) < UartHal.RxArrivedAmount)
+            if((UartHal.RxIndex) < (UartHal.RxArrivedAmount + 4))
             {
                 UartHal.RxArrivedAmount = received;
                 UartHal.RxBuff[UartHal.RxIndex++] = received;
             }
-            if((UartHal.RxIndex) == UartHal.RxArrivedAmount)
+            if((UartHal.RxIndex) == (UartHal.RxArrivedAmount + 4))
             {
                 UartHal.RxIndex = 0;
                 UartHal.NewArrived = true;
@@ -69,6 +72,7 @@ void UartHal_Handler(void)
     /* UART tx buffer empty interrupt check */
     if(((PIE1 & 0b00010000) != 0) && ((PIR1 & 0b00010000) != 0))
     {
-        
+        if(UartHal.TxIndex < UartHal.TxAmount) TXREG=UartHal.TxBuff[UartHal.TxIndex++];
+        else PIE1 &= 0b11101111; 
     }
 }

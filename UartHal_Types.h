@@ -17,6 +17,7 @@ typedef struct sUart
     uint8 TxBuff[MAX_NUM_OF_MESSAGE];
     uint8 RxBuff[MAX_NUM_OF_MESSAGE];
     uint8 TxIndex;
+    uint8 TxAmount;
     uint8 RxIndex;
     uint8 RxArrivedAmount;
     uint8 NewArrived;

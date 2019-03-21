@@ -5,6 +5,12 @@
                    displayName="Header Files"
                    projectFiles="true">
       <logicalFolder name="src" displayName="src" projectFiles="true">
+        <logicalFolder name="KWPMsgHandler"
+                       displayName="KWPMsgHandler"
+                       projectFiles="true">
+          <itemPath>src/KWPMsgHandler/KWPMsgHandler.h</itemPath>
+          <itemPath>src/KWPMsgHandler/KWPMsgHandler_Types.h</itemPath>
+        </logicalFolder>
         <logicalFolder name="Tasking" displayName="Tasking" projectFiles="true">
           <itemPath>src/Tasking/Tasking.h</itemPath>
           <itemPath>src/Tasking/Tasking_Types.h</itemPath>
@@ -25,6 +31,11 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="src" displayName="src" projectFiles="true">
+        <logicalFolder name="KWPMsgHandler"
+                       displayName="KWPMsgHandler"
+                       projectFiles="true">
+          <itemPath>src/KWPMsgHandler/KWPMsgHandler.c</itemPath>
+        </logicalFolder>
         <logicalFolder name="Tasking" displayName="Tasking" projectFiles="true">
           <itemPath>src/Tasking/Tasking.c</itemPath>
         </logicalFolder>
@@ -90,7 +101,8 @@
         <property key="default-char-type" value="true"/>
         <property key="define-macros" value=""/>
         <property key="disable-optimizations" value="true"/>
-        <property key="extra-include-directories" value="src;src\Tasking;src\UartHal"/>
+        <property key="extra-include-directories"
+                  value="src;src\Tasking;src\UartHal;src\KWPMsgHandler"/>
         <property key="favor-optimization-for" value="-speed,+space"/>
         <property key="garbage-collect-data" value="true"/>
         <property key="garbage-collect-functions" value="true"/>

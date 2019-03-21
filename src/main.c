@@ -14,8 +14,6 @@
 void __interrupt(high_priority) ISRHandler(void)
 {
     PIR1 &= 0b11111101;
-    uint8 asd;
-    MyGetc(&asd);
     LATA ^= 0b1;
     Tasking_TaskHandler();
 }
@@ -59,11 +57,12 @@ void main(void)
     LATA ^= 0b100;
     Tasking_Add(100, &Toggle);
     Tasking_Start(&Toggle);
-    
+    uint8 del1,del2;
+    uint8 c[] = "Hello";
     while(1)
     {
-        _delay(100);
-        MyPutc('a');
+        for(del1=0; del1<255;del1++) for(del2=0;del2<255;del2++);
+        MyPutc(&c,6);
     }
 }
 
