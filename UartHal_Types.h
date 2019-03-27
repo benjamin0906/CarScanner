@@ -21,6 +21,7 @@ typedef struct sUart
     uint8 RxIndex;
     uint8 RxArrivedAmount;
     uint8 NewArrived;
+    uint8 CRC;
 } dtUartHal;
 
 #endif	/* UARTHAL_TYPES_H */

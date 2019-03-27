@@ -12,12 +12,14 @@
 
 typedef enum EnumSmKwp
 {
-    KWPInit,
+    KWP_Init,
+    KWP_WaitForInitResponse,
 }dtEnumSmKwp;
 
 typedef struct sKWPMsgHandler
 {
     dtEnumSmKwp SM;
+    uint16      Timeout;
 } dtKWPMsgHandler;
 
 

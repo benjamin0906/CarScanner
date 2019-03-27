@@ -52,20 +52,26 @@ void UartHal_Handler(void)
                 /* Besides this of the data bytes 4 other bytes arrive too. The first byte (with size), src and dst adresses, and checksum. */
                 UartHal.RxArrivedAmount = received - 0x80;
                 UartHal.RxBuff[UartHal.RxIndex++] = received;
+                UartHal.CRC = received;
             }
         }
         else
         {
             if((UartHal.RxIndex) < (UartHal.RxArrivedAmount + 4))
             {
-                UartHal.RxArrivedAmount = received;
-                UartHal.RxBuff[UartHal.RxIndex++] = received;
+                if((UartHal.RxIndex) < (UartHal.RxArrivedAmount + 3))
+                {
+                    UartHal.RxBuff[UartHal.RxIndex++] = received;
+                    UartHal.CRC += received;
+                }
+                else
+                {
+                    /* This branch is for the CRC byte */
+                    if(UartHal.CRC == received) UartHal.NewArrived = true;
+                    UartHal.RxIndex = 0;
+                }
             }
-            if((UartHal.RxIndex) == (UartHal.RxArrivedAmount + 4))
-            {
-                UartHal.RxIndex = 0;
-                UartHal.NewArrived = true;
-            }
+
         }
     }
     
