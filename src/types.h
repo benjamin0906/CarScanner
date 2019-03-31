@@ -8,6 +8,8 @@
 #ifndef TYPES_H
 #define	TYPES_H
 
+#include "../xc.h"
+
 #define true    1
 #define false   0
 #define NULL    0
@@ -19,16 +21,6 @@ typedef signed short    int16;
 typedef unsigned long   uint32;
 typedef signed long     int32;
 
-#ifdef	__cplusplus
-extern "C" {
-#endif
-
-
-
-
-#ifdef	__cplusplus
-}
-#endif
 
 #endif	/* TYPES_H */
 

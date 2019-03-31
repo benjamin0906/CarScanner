@@ -23,7 +23,7 @@ void UartHal_InitUart(void)
     IPR1 &= 0b11001111;
 }
 
-void MyPutc(uint8 *data, uint8 Amount)
+void MyPutData(uint8 *data, uint8 Amount)
 {
     UartHal.TxIndex=0;
     uint8 looper=0;

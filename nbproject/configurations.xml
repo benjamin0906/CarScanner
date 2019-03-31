@@ -5,6 +5,18 @@
                    displayName="Header Files"
                    projectFiles="true">
       <logicalFolder name="src" displayName="src" projectFiles="true">
+        <logicalFolder name="DisplayHandler"
+                       displayName="DisplayHandler"
+                       projectFiles="true">
+          <itemPath>src/DisplayHandler/DisplayHandler.h</itemPath>
+          <itemPath>src/DisplayHandler/DisplayHandler_Types.h</itemPath>
+        </logicalFolder>
+        <logicalFolder name="Functionalities"
+                       displayName="Functionalities"
+                       projectFiles="true">
+          <itemPath>GettingTroubleCodes_Types.h</itemPath>
+          <itemPath>GettingTroubleCodes.h</itemPath>
+        </logicalFolder>
         <logicalFolder name="KWPMsgHandler"
                        displayName="KWPMsgHandler"
                        projectFiles="true">
@@ -19,6 +31,9 @@
           <itemPath>src/UartHal/UartHal.h</itemPath>
           <itemPath>UartHal_Types.h</itemPath>
         </logicalFolder>
+        <logicalFolder name="Utilities" displayName="Utilities" projectFiles="true">
+          <itemPath>src/Utilities/Utilities.h</itemPath>
+        </logicalFolder>
         <itemPath>src/main.h</itemPath>
         <itemPath>src/types.h</itemPath>
       </logicalFolder>
@@ -31,6 +46,16 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="src" displayName="src" projectFiles="true">
+        <logicalFolder name="DisplayHandler"
+                       displayName="DisplayHandler"
+                       projectFiles="true">
+          <itemPath>src/DisplayHandler/DisplayHandler.c</itemPath>
+        </logicalFolder>
+        <logicalFolder name="Functionalities"
+                       displayName="Functionalities"
+                       projectFiles="true">
+          <itemPath>GettingTroubleCodes.c</itemPath>
+        </logicalFolder>
         <logicalFolder name="KWPMsgHandler"
                        displayName="KWPMsgHandler"
                        projectFiles="true">
@@ -41,6 +66,9 @@
         </logicalFolder>
         <logicalFolder name="UartHal" displayName="UartHal" projectFiles="true">
           <itemPath>src/UartHal/UartHal.c</itemPath>
+        </logicalFolder>
+        <logicalFolder name="Utilities" displayName="Utilities" projectFiles="true">
+          <itemPath>Utilities.c</itemPath>
         </logicalFolder>
         <itemPath>src/main.c</itemPath>
       </logicalFolder>
@@ -53,6 +81,7 @@
   </logicalFolder>
   <sourceRootList>
     <Elem></Elem>
+    <Elem>src/DisplayHandler</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -102,7 +131,7 @@
         <property key="define-macros" value=""/>
         <property key="disable-optimizations" value="true"/>
         <property key="extra-include-directories"
-                  value="src;src\Tasking;src\UartHal;src\KWPMsgHandler"/>
+                  value="src;src\Tasking;src\UartHal;src\KWPMsgHandler;src\DisplayHandler;src\Functionalities"/>
         <property key="favor-optimization-for" value="-speed,+space"/>
         <property key="garbage-collect-data" value="true"/>
         <property key="garbage-collect-functions" value="true"/>

@@ -14,6 +14,7 @@
             <make-dep-projects/>
             <sourceRootList>
                 <sourceRootElem/>
+                <sourceRootElem>src/DisplayHandler</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>
