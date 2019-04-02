@@ -5,7 +5,18 @@ dtKWPMsgHandler KWPMsgHandler;
 
 #define WAIT_TIMEOUT    60000
 
-void SetMsg(void);
+uint8 SetOperational(dtOp Op)
+{
+    uint8 ret=0;
+    if(KWPMsgHandler.SM < KWP_InitDone)
+    {
+        ret = 1;
+    }
+    else if(KWPMsgHandler.SM == KWP_InitDone)
+    {
+        
+    }
+}
 
 uint8 CalcCheckSum(uint8 *data,uint8 len)
 {
@@ -81,6 +92,23 @@ void KWPMsgHandler_Task(void)
                     SetMsg();
                 }
             }
+            break;
+        case KWP_WaitResponse:
+            if(KWPMsgHandler.WaitForAnswer == true)
+            {
+                if((UartHal.NewArrived == true) && (KWPMsgHandler.QuerriedService == (UartHal.RxBuff[3]&0x0f)) && (KWPMsgHandler.QuerriedPID == (UartHal.RxBuff[4]&0x0f)))
+                {
+                    SetMsg();
+                    KWPMsgHandler.SM = KWPMsgHandler.NextSM;
+                }
+            }
+            break;
+        case KWP_GettingTroubles:
+            AssebleQueryMsg(1,1);
+            KWPMsgHandler.SM = KWP_WaitResponse;
+            KWPMsgHandler.NextSM = KWP_GettingTroublesArrived;
+            break;
+        case KWP_GettingTroublesArrived:
             break;
     }
 }

@@ -15,7 +15,15 @@ typedef enum EnumSmKwp
     KWP_Init,
     KWP_WaitForInitResponse,
     KWP_InitDone,
+    KWP_WaitResponse,
+    KWP_GettingTroubles,
+    KWP_GettingTroublesArrived,
 }dtEnumSmKwp;
+
+typedef enum eOperationals
+{
+    TroubleCodes,
+}dtOp;
 
 typedef struct sMsg
 {
@@ -31,6 +39,7 @@ typedef struct sMsg
 typedef struct sKWPMsgHandler
 {
     dtEnumSmKwp SM;
+    dtEnumSmKwp NextSM;
     uint16      Timeout;
     uint8       ECUAddr;
     uint8       QuerriedService;
