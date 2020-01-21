@@ -1,9 +1,11 @@
 #include "KWPMsgHandler.h"
 #include "../UartHal/UartHal.h"
 
+#define WAIT_TIMEOUT    60000
+
 dtKWPMsgHandler KWPMsgHandler;
 
-#define WAIT_TIMEOUT    60000
+void SetMsg(void);
 
 uint8 SetOperational(dtOp Op)
 {

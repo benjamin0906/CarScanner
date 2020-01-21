@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=CarScanner.X
+PROJECTNAME=CarScanner
 
 # Active Configuration
 DEFAULTCONF=default
