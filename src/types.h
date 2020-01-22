@@ -8,11 +8,11 @@
 #ifndef TYPES_H
 #define	TYPES_H
 
-#include "../xc.h"
+//#include "../xc.h"
 
 #define true    1
 #define false   0
-#define NULL    0
+#define NULL   0
 
 typedef unsigned char   uint8;
 typedef signed char     int8;

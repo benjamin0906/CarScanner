@@ -8,7 +8,7 @@
 #ifndef MAIN_H
 #define	MAIN_H
 
-#include <xc.h>
+//#include <xc.h>
 #include "types.h"
 #include "Tasking.h"
 #include "UartHal/UartHal.h"

@@ -60,7 +60,6 @@ void DisplayHandler_Task(void)
             if(IsPassed(DisplayHandler.Timer,8) != 0)
             {
                 output_low(LCD_EN);
-                DisplayHandler.SM;
                 DisplayHandler.SM = DisplayHandler.NextSm;
             }
             break;

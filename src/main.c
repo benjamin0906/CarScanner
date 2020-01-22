@@ -6,6 +6,7 @@
  */
 
 #include <main.h>
+#include <Ports.h>
 #include "Utilities/Utilities.h"
 #include "DisplayHandler/DisplayHandler.h"
 #include "../GettingTroubleCodes.h"
@@ -15,14 +16,10 @@
 #pragma config LVP = OFF
 
 uint32 Ticks;
-#define asd LATA,1
-
-
-
 
 void __interrupt(high_priority) ISRHandler(void)
 {
-    PIR1 &= 0b11111101;
+    *PIR1 &= 0b11111101;
     //LATA ^= 0b1;
     output_toggle(PIN_A0);
     Tasking_TaskHandler();
@@ -31,7 +28,7 @@ void __interrupt(high_priority) ISRHandler(void)
 
 void __interrupt(low_priority) ISRHandler2(void)
 {
-    LATA ^= 0b100;
+    *LAT_A ^= 0b100;
     UartHal_Handler();
     
     
@@ -40,34 +37,34 @@ void __interrupt(low_priority) ISRHandler2(void)
 /* Set up the 1 ms timer */
 void TimerInit(void)
 {
-    T2CON = 0b00011111;
-    PR2 = 124;
-    PIE1 |= 0b10;
-    IPR1 |= 0b10;
-    PIR1 &= 0b11111101;
+    *T2CON = 0b00011111;
+    *PR2 = 124;
+    *PIE1 |= 0b10;
+    *IPR1 |= 0b10;
+    *PIR1 &= 0b11111101;
 }
 
 void Toggle(void)
 {
-    LATA ^= 0b10;
+    *LAT_A ^= 0b10;
 }
 
 extern void LCDInit(void);
 extern void KWPMsgHandler_Task(void);
 void main(void) 
 {
-    OSCCON=0b01110000;
-    OSCTUNE = 0b01000000;
-    RCON |=  10000000;
+    *OSCCON=0b01110000;
+    *OSCTUNE = 0b01000000;
+    *RCON |=  0b10000000;
     //ei();
     
     TimerInit();
     UartHal_InitUart();
     
-    INTCON |=0b11000000;
-    TRISA=0b00000000;
-    LATA=0b00000001;
-    LATA ^= 0b100;
+    *INTCON |=0b11000000;
+    *TRISA=0b00000000;
+    *LAT_A=0b00000001;
+    *LAT_A ^= 0b100;
     
     //LCDInit();
     LCDInit();
@@ -81,7 +78,7 @@ void main(void)
     Tasking_Start(&DisplayHandler_Task);
     
             
-    Tasking_Add(1000, &GettingTroubleCodes_Task);
+    Tasking_Add(200, &GettingTroubleCodes_Task);
     Tasking_Start(&GettingTroubleCodes_Task);
     //KWPMsgHandler_Task();
     
