@@ -49,10 +49,9 @@ void Toggle(void)
     *LAT_A ^= 0b10;
 }
 
-extern void LCDInit(void);
-extern void KWPMsgHandler_Task(void);
 void main(void) 
 {
+    /* Turning on the oscillator */
     *OSCCON=0b01110000;
     *OSCTUNE = 0b01000000;
     *RCON |=  0b10000000;
