@@ -23,6 +23,8 @@
           <itemPath>src/KWPMsgHandler/KWPMsgHandler.h</itemPath>
           <itemPath>src/KWPMsgHandler/KWPMsgHandler_Types.h</itemPath>
         </logicalFolder>
+        <logicalFolder name="Ports" displayName="Ports" projectFiles="true">
+        </logicalFolder>
         <logicalFolder name="Tasking" displayName="Tasking" projectFiles="true">
           <itemPath>src/Tasking/Tasking.h</itemPath>
           <itemPath>src/Tasking/Tasking_Types.h</itemPath>
@@ -36,7 +38,6 @@
         </logicalFolder>
         <itemPath>src/main.h</itemPath>
         <itemPath>src/types.h</itemPath>
-        <itemPath>src/Ports.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
@@ -62,6 +63,9 @@
                        projectFiles="true">
           <itemPath>src/KWPMsgHandler/KWPMsgHandler.c</itemPath>
         </logicalFolder>
+        <logicalFolder name="Ports" displayName="Ports" projectFiles="true">
+          <itemPath>src/Ports/Ports.c</itemPath>
+        </logicalFolder>
         <logicalFolder name="Tasking" displayName="Tasking" projectFiles="true">
           <itemPath>src/Tasking/Tasking.c</itemPath>
         </logicalFolder>
@@ -72,7 +76,6 @@
           <itemPath>Utilities.c</itemPath>
         </logicalFolder>
         <itemPath>src/main.c</itemPath>
-        <itemPath>src/DisplayHandler/Ports.c</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
@@ -93,7 +96,7 @@
         <targetDevice>PIC18F2480</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>jlink</platformTool>
+        <platformTool>PICkit2PlatformTool</platformTool>
         <languageToolchain>XC8</languageToolchain>
         <languageToolchainVersion>2.10</languageToolchainVersion>
         <platform>3</platform>
@@ -208,7 +211,7 @@
       <PICkit2PlatformTool>
         <property key="pk2settings.3state" value="false"/>
         <property key="pk2settings.preserveee" value="false"/>
-        <property key="pk2settings.setvddvoltage" value="5,00"/>
+        <property key="pk2settings.setvddvoltage" value="5.00"/>
         <property key="pk2settings.userpgmexec" value="true"/>
         <property key="pk2settings.usetargetpower" value="false"/>
       </PICkit2PlatformTool>

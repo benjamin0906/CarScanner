@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=src/DisplayHandler/DisplayHandler.c GettingTroubleCodes.c src/KWPMsgHandler/KWPMsgHandler.c src/Tasking/Tasking.c src/UartHal/UartHal.c Utilities.c src/main.c src/DisplayHandler/Ports.c
+SOURCEFILES_QUOTED_IF_SPACED=src/DisplayHandler/DisplayHandler.c GettingTroubleCodes.c src/KWPMsgHandler/KWPMsgHandler.c src/Tasking/Tasking.c src/UartHal/UartHal.c Utilities.c src/main.c src/Ports/Ports.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/src/DisplayHandler/DisplayHandler.p1 ${OBJECTDIR}/GettingTroubleCodes.p1 ${OBJECTDIR}/src/KWPMsgHandler/KWPMsgHandler.p1 ${OBJECTDIR}/src/Tasking/Tasking.p1 ${OBJECTDIR}/src/UartHal/UartHal.p1 ${OBJECTDIR}/Utilities.p1 ${OBJECTDIR}/src/main.p1 ${OBJECTDIR}/src/DisplayHandler/Ports.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/src/DisplayHandler/DisplayHandler.p1.d ${OBJECTDIR}/GettingTroubleCodes.p1.d ${OBJECTDIR}/src/KWPMsgHandler/KWPMsgHandler.p1.d ${OBJECTDIR}/src/Tasking/Tasking.p1.d ${OBJECTDIR}/src/UartHal/UartHal.p1.d ${OBJECTDIR}/Utilities.p1.d ${OBJECTDIR}/src/main.p1.d ${OBJECTDIR}/src/DisplayHandler/Ports.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/src/DisplayHandler/DisplayHandler.p1 ${OBJECTDIR}/GettingTroubleCodes.p1 ${OBJECTDIR}/src/KWPMsgHandler/KWPMsgHandler.p1 ${OBJECTDIR}/src/Tasking/Tasking.p1 ${OBJECTDIR}/src/UartHal/UartHal.p1 ${OBJECTDIR}/Utilities.p1 ${OBJECTDIR}/src/main.p1 ${OBJECTDIR}/src/Ports/Ports.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/src/DisplayHandler/DisplayHandler.p1.d ${OBJECTDIR}/GettingTroubleCodes.p1.d ${OBJECTDIR}/src/KWPMsgHandler/KWPMsgHandler.p1.d ${OBJECTDIR}/src/Tasking/Tasking.p1.d ${OBJECTDIR}/src/UartHal/UartHal.p1.d ${OBJECTDIR}/Utilities.p1.d ${OBJECTDIR}/src/main.p1.d ${OBJECTDIR}/src/Ports/Ports.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/src/DisplayHandler/DisplayHandler.p1 ${OBJECTDIR}/GettingTroubleCodes.p1 ${OBJECTDIR}/src/KWPMsgHandler/KWPMsgHandler.p1 ${OBJECTDIR}/src/Tasking/Tasking.p1 ${OBJECTDIR}/src/UartHal/UartHal.p1 ${OBJECTDIR}/Utilities.p1 ${OBJECTDIR}/src/main.p1 ${OBJECTDIR}/src/DisplayHandler/Ports.p1
+OBJECTFILES=${OBJECTDIR}/src/DisplayHandler/DisplayHandler.p1 ${OBJECTDIR}/GettingTroubleCodes.p1 ${OBJECTDIR}/src/KWPMsgHandler/KWPMsgHandler.p1 ${OBJECTDIR}/src/Tasking/Tasking.p1 ${OBJECTDIR}/src/UartHal/UartHal.p1 ${OBJECTDIR}/Utilities.p1 ${OBJECTDIR}/src/main.p1 ${OBJECTDIR}/src/Ports/Ports.p1
 
 # Source Files
-SOURCEFILES=src/DisplayHandler/DisplayHandler.c GettingTroubleCodes.c src/KWPMsgHandler/KWPMsgHandler.c src/Tasking/Tasking.c src/UartHal/UartHal.c Utilities.c src/main.c src/DisplayHandler/Ports.c
+SOURCEFILES=src/DisplayHandler/DisplayHandler.c GettingTroubleCodes.c src/KWPMsgHandler/KWPMsgHandler.c src/Tasking/Tasking.c src/UartHal/UartHal.c Utilities.c src/main.c src/Ports/Ports.c
 
 
 
@@ -150,13 +150,13 @@ ${OBJECTDIR}/src/main.p1: src/main.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/src/main.d ${OBJECTDIR}/src/main.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/src/main.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/src/DisplayHandler/Ports.p1: src/DisplayHandler/Ports.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/src/DisplayHandler" 
-	@${RM} ${OBJECTDIR}/src/DisplayHandler/Ports.p1.d 
-	@${RM} ${OBJECTDIR}/src/DisplayHandler/Ports.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1    -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"src" -I"src/Tasking" -I"src/UartHal" -I"src/KWPMsgHandler" -I"src/DisplayHandler" -I"src/Functionalities" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/src/DisplayHandler/Ports.p1 src/DisplayHandler/Ports.c 
-	@-${MV} ${OBJECTDIR}/src/DisplayHandler/Ports.d ${OBJECTDIR}/src/DisplayHandler/Ports.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/src/DisplayHandler/Ports.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/src/Ports/Ports.p1: src/Ports/Ports.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/src/Ports" 
+	@${RM} ${OBJECTDIR}/src/Ports/Ports.p1.d 
+	@${RM} ${OBJECTDIR}/src/Ports/Ports.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1    -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"src" -I"src/Tasking" -I"src/UartHal" -I"src/KWPMsgHandler" -I"src/DisplayHandler" -I"src/Functionalities" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/src/Ports/Ports.p1 src/Ports/Ports.c 
+	@-${MV} ${OBJECTDIR}/src/Ports/Ports.d ${OBJECTDIR}/src/Ports/Ports.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/src/Ports/Ports.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 else
 ${OBJECTDIR}/src/DisplayHandler/DisplayHandler.p1: src/DisplayHandler/DisplayHandler.c  nbproject/Makefile-${CND_CONF}.mk
@@ -215,13 +215,13 @@ ${OBJECTDIR}/src/main.p1: src/main.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/src/main.d ${OBJECTDIR}/src/main.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/src/main.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/src/DisplayHandler/Ports.p1: src/DisplayHandler/Ports.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/src/DisplayHandler" 
-	@${RM} ${OBJECTDIR}/src/DisplayHandler/Ports.p1.d 
-	@${RM} ${OBJECTDIR}/src/DisplayHandler/Ports.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"src" -I"src/Tasking" -I"src/UartHal" -I"src/KWPMsgHandler" -I"src/DisplayHandler" -I"src/Functionalities" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/src/DisplayHandler/Ports.p1 src/DisplayHandler/Ports.c 
-	@-${MV} ${OBJECTDIR}/src/DisplayHandler/Ports.d ${OBJECTDIR}/src/DisplayHandler/Ports.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/src/DisplayHandler/Ports.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/src/Ports/Ports.p1: src/Ports/Ports.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/src/Ports" 
+	@${RM} ${OBJECTDIR}/src/Ports/Ports.p1.d 
+	@${RM} ${OBJECTDIR}/src/Ports/Ports.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"src" -I"src/Tasking" -I"src/UartHal" -I"src/KWPMsgHandler" -I"src/DisplayHandler" -I"src/Functionalities" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/src/Ports/Ports.p1 src/Ports/Ports.c 
+	@-${MV} ${OBJECTDIR}/src/Ports/Ports.d ${OBJECTDIR}/src/Ports/Ports.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/src/Ports/Ports.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 
@@ -242,7 +242,7 @@ endif
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
 dist/${CND_CONF}/${IMAGE_TYPE}/CarScanner.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    
 	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-	${MP_CC} $(MP_EXTRA_LD_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -Wl,-Map=dist/${CND_CONF}/${IMAGE_TYPE}/CarScanner.${IMAGE_TYPE}.map  -D__DEBUG=1  -DXPRJ_default=$(CND_CONF)  -Wl,--defsym=__MPLAB_BUILD=1    -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"src" -I"src/Tasking" -I"src/UartHal" -I"src/KWPMsgHandler" -I"src/DisplayHandler" -I"src/Functionalities" -mwarn=-3 -Wa,-a -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto        $(COMPARISON_BUILD) -Wl,--memorysummary,dist/${CND_CONF}/${IMAGE_TYPE}/memoryfile.xml -o dist/${CND_CONF}/${IMAGE_TYPE}/CarScanner.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}     
+	${MP_CC} $(MP_EXTRA_LD_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -Wl,-Map=dist/${CND_CONF}/${IMAGE_TYPE}/CarScanner.${IMAGE_TYPE}.map  -D__DEBUG=1  -DXPRJ_default=$(CND_CONF)  -Wl,--defsym=__MPLAB_BUILD=1    -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"src" -I"src/Tasking" -I"src/UartHal" -I"src/KWPMsgHandler" -I"src/DisplayHandler" -I"src/Functionalities" -mwarn=-3 -Wa,-a -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -mrom=default,-3dc0-3fff -mram=default,-2f4-2ff,-fdb-fdf,-fe3-fe7,-feb-fef,-fd4-fd4,-ffd-fff  $(COMPARISON_BUILD) -Wl,--memorysummary,dist/${CND_CONF}/${IMAGE_TYPE}/memoryfile.xml -o dist/${CND_CONF}/${IMAGE_TYPE}/CarScanner.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}     
 	@${RM} dist/${CND_CONF}/${IMAGE_TYPE}/CarScanner.${IMAGE_TYPE}.hex 
 	
 else
