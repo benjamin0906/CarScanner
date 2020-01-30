@@ -11,7 +11,7 @@
 #include "DisplayHandler/DisplayHandler.h"
 #include "../GettingTroubleCodes.h"
 
-#pragma config OSC = IRCIO67
+#pragma config OSC = HSPLL
 #pragma config WDT = OFF
 #pragma config LVP = OFF
 
@@ -66,10 +66,7 @@ extern void LCDInit(void);
 extern void KWPMsgHandler_Task(void);
 void main(void) 
 {
-    OSCCON=0b01110000;
-    OSCTUNE = 0b01000000;
-    RCON |=  0b10000000;
-    //ei();
+    RCON |=  0b10000000;//*/
     
     TimerInit();
     UartHal_InitUart();

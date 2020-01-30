@@ -24,6 +24,8 @@
           <itemPath>src/KWPMsgHandler/KWPMsgHandler_Types.h</itemPath>
         </logicalFolder>
         <logicalFolder name="Ports" displayName="Ports" projectFiles="true">
+          <itemPath>src/Ports/Ports.h</itemPath>
+          <itemPath>src/Ports/Ports_Types.h</itemPath>
         </logicalFolder>
         <logicalFolder name="Tasking" displayName="Tasking" projectFiles="true">
           <itemPath>src/Tasking/Tasking.h</itemPath>
