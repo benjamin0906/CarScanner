@@ -11,14 +11,17 @@
 #include "DisplayHandler/DisplayHandler.h"
 #include "../GettingTroubleCodes.h"
 
+/* Device will use the external crystal with 4x PLL */
 #pragma config OSC = HSPLL
 #pragma config WDT = OFF
 #pragma config LVP = OFF
 
 uint32 Ticks;
 uint8 abc;
-#define asd LATA,1
 
+static dtRcon *const Rcon = 0xFD0;
+static dtIntCon *const IntCon = 0xFF2;
+static dtT2Con *const T2Con = 0xFCA;
 
 
 
@@ -50,7 +53,10 @@ void __interrupt(low_priority) ISRHandler2(void)
 /* Set up the 1 ms timer */
 void TimerInit(void)
 {
-    T2CON = 0b00011111;
+    //T2CON = 0b00011111;
+    T2Con->T2CKPS = 0x0;
+    T2Con->T2OUTPS = 0x03;
+    T2Con->TMR2ON = 1;
     PR2 = 124;
     PIE1 |= 0b10;
     IPR1 |= 0b10;
@@ -66,14 +72,17 @@ extern void LCDInit(void);
 extern void KWPMsgHandler_Task(void);
 void main(void) 
 {
-    RCON |=  0b10000000;//*/
+    /* Enable priority levels on interrupts */
+    Rcon->IPEN = 1;
+    
+    /* Enable global interrupt */
+    IntCon->GIE_GIEH = 1;
+    
+    /* Enable peripheral interrupt. */
+    IntCon->PEIE_GIEL = 1;
     
     TimerInit();
     UartHal_InitUart();
-    
-    INTCON |=0b11000000;
-    TRISA=0b00000000;
-    LATA=0b00000000;
     
     GpioDir(PINC4, 0);
     
