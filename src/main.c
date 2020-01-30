@@ -54,7 +54,7 @@ void __interrupt(low_priority) ISRHandler2(void)
 void TimerInit(void)
 {
     //T2CON = 0b00011111;
-    T2Con->T2CKPS = 0x0;
+    T2Con->T2CKPS = 0x3;
     T2Con->T2OUTPS = 0x03;
     T2Con->TMR2ON = 1;
     PR2 = 124;
