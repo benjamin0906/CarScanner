@@ -14,8 +14,8 @@ void GettingTroubleCodes_Task(void)
             for(looper = 0; looper<sizeof(temp);looper++) Variables.Lcd.RawOne[looper] = temp[looper];
             for(looper = 0; looper<sizeof(temp2);looper++) Variables.Lcd.RawTwo[looper] = temp2[looper];
             LcdClear();
-            MyPutc(&Variables.Lcd.RawOne[0],0);
-            MyPutc(&Variables.Lcd.RawTwo[1],1);
+            PutStr(&Variables.Lcd.RawOne[0],0);
+            PutStr(&Variables.Lcd.RawTwo[1],1);
             Variables.SM = Querry;
         }   
             

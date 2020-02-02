@@ -8,7 +8,7 @@
 #include <main.h>
 #include "Ports/Ports.h"
 #include "Utilities/Utilities.h"
-//#include "DisplayHandler/DisplayHandler.h"
+#include "DisplayHandler/DisplayHandler.h"
 //#include "../GettingTroubleCodes.h"
 
 /* Device will use the external crystal with 4x PLL */
@@ -75,6 +75,10 @@ extern void LCDInit(void);
 extern void KWPMsgHandler_Task(void);
 void main(void) 
 {
+    {
+        uint8 delay;
+        for(delay = 0; delay < 250; delay++);
+    }
     /* Enable priority levels on interrupts */
     RCON->IPEN = 1;
     
@@ -89,30 +93,31 @@ void main(void)
     
     GpioDir(PINC4, 0);
     
-    //LCDInit();
-    /*LCDInit();
-    Tasking_Add(100, &Toggle);
-    Tasking_Start(&Toggle);
+    LCDInit();
+    //Tasking_Add(100, &Toggle);
+    //Tasking_Start(&Toggle);
     
-    Tasking_Add(1, &KWPMsgHandler_Task);
-    Tasking_Start(&KWPMsgHandler_Task);
+    //Tasking_Add(1, &KWPMsgHandler_Task);
+    //Tasking_Start(&KWPMsgHandler_Task);
     
     Tasking_Add(1, &DisplayHandler_Task);
     Tasking_Start(&DisplayHandler_Task);
     
             
-    Tasking_Add(1000, &GettingTroubleCodes_Task);
-    Tasking_Start(&GettingTroubleCodes_Task);
+    //Tasking_Add(1000, &GettingTroubleCodes_Task);
+    // Tasking_Start(&GettingTroubleCodes_Task);
     //KWPMsgHandler_Task();*/
     
     
     
     uint8 del1,del2;
+    uint8 c[] = "Szia! :)";
+    PutStr(&c,0);
     //LcdClear();
     while(1)
     {
         for(del1=0; del1<255;del1++) for(del2=0;del2<255;del2++);
-        //MyPutc(&c,6);
+        
     }
 }
 

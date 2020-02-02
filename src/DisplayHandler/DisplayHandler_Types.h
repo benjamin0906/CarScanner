@@ -12,13 +12,13 @@
 #include "../Ports/Ports.h"
 #include "../Utilities/Utilities.h"
 
-#define LCD_RS  PINA3
-#define LCD_RW  PINA4
-#define LCD_EN  PINA5
-#define LCD_D4  PINA7
-#define LCD_D5  PINA6
-#define LCD_D6  PINC0
-#define LCD_D7  PINC1
+#define LCD_RS  PINC3
+#define LCD_RW  PINC1
+#define LCD_EN  PINC0
+#define LCD_D4  PINA5
+#define LCD_D5  PINB2
+#define LCD_D6  PINA4
+#define LCD_D7  PINA2
 
 #define LCD_BUFFER_SIZE 30
 

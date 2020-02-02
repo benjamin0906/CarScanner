@@ -17,7 +17,7 @@ void LCDSendByte(uint8 data, uint8 CoM)
     if(DisplayHandler.OutputNum >= LCD_BUFFER_SIZE) DisplayHandler.OutputNum=0; 
 }
 
-void MyPutc(uint8 *data, uint8 line)
+void PutStr(uint8 *data, uint8 line)
 {
     uint8 looper;
     if(line != 0) LCDSendByte(0xA9,1);
@@ -32,16 +32,18 @@ void LcdClear(void)
 
 void LCDInit(void)
 {
+    GpioDir(LCD_RS,0);
+    GpioDir(LCD_RW,0);
+    GpioDir(LCD_EN,0);
+    GpioDir(LCD_D4,0);
+    GpioDir(LCD_D5,0);
+    GpioDir(LCD_D6,0);
+    GpioDir(LCD_D7,0);
+    
     GpioOut(LCD_RS,0);
     GpioOut(LCD_RW,0);
     GpioOut(LCD_EN,0);
-    /*output_low(LCD_D4);
-    output_low(LCD_D5);
-    output_low(LCD_D6);
-    output_low(LCD_D7);
-    LCDEnter();
-    GpioOut(LCD_D5,1);
-    LCDEnter();*/
+    
     DisplayHandler.OutputCntr=0;
     DisplayHandler.OutputNum=0;
     LCDSendByte(0x02,1);

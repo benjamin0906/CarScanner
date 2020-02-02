@@ -13,7 +13,7 @@
 
 extern void DisplayHandler_Task(void);
 extern void LCDInit(void);
-extern void MyPutc(uint8 *data, uint8 line);
+extern void PutStr(uint8 *data, uint8 line);
 extern void LcdClear(void);
 
 
