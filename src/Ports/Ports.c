@@ -4,6 +4,7 @@
 
 static uint8 *const LATs[3] = {(uint8*)0xF89, (uint8*)0xF8A, (uint8*)0xF8B};
 static uint8 *const TRISs[3]= {(uint8*)0xF92, (uint8*)0xF93, (uint8*)0xF94};
+static uint8 *const PORTs[3]= {(uint8*)0xF80, (uint8*)0xF81, (uint8*)0xF82};
 
 const dtGPIO PINA0  = {0x0,0x0};
 const dtGPIO PINA1  = {0x0,0x1};
@@ -32,6 +33,7 @@ const dtGPIO PINC7  = {0x2,0x7};
 
 
 void GpioOut(dtGPIO GPIO, uint8 State);
+void GpioToggle(dtGPIO GPIO);
 void GpioDir(dtGPIO GPIO, uint8 Dir);
 
 void GpioOut(dtGPIO GPIO, uint8 State)
@@ -63,4 +65,10 @@ void GpioDir(dtGPIO GPIO, uint8 Dir)
         /* If the pin should be output the desired bit will be set to null. */
         *TRISs[GPIO.Port] &= ~(1<<GPIO.Pin);
     }
+}
+
+void GpioToggle(dtGPIO GPIO)
+{
+    if((*PORTs[GPIO.Port] & (1<<GPIO.Pin)) != 0) *LATs[GPIO.Port] &= ~(1<<GPIO.Pin);
+    else *LATs[GPIO.Port] |= (1<<GPIO.Pin);
 }

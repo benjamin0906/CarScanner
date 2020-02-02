@@ -4,7 +4,7 @@ dtDisplayHandler DisplayHandler;
 
 void LCDEnter()
 {
-    output_high(LCD_EN);
+    GpioOut(LCD_EN,1);
     //delay_ms(10);
     
 }
@@ -30,19 +30,17 @@ void LcdClear(void)
     LCDSendByte(0x01,1);
 }
 
-
-
 void LCDInit(void)
 {
-    output_low(LCD_RS);
-    output_low(LCD_RW);
-    output_low(LCD_EN);
+    GpioOut(LCD_RS,0);
+    GpioOut(LCD_RW,0);
+    GpioOut(LCD_EN,0);
     /*output_low(LCD_D4);
     output_low(LCD_D5);
     output_low(LCD_D6);
     output_low(LCD_D7);
     LCDEnter();
-    output_high(LCD_D5);
+    GpioOut(LCD_D5,1);
     LCDEnter();*/
     DisplayHandler.OutputCntr=0;
     DisplayHandler.OutputNum=0;
@@ -59,7 +57,7 @@ void DisplayHandler_Task(void)
         case LcdEnter_Wait:
             if(IsPassed(DisplayHandler.Timer,8) != 0)
             {
-                output_low(LCD_EN);
+                GpioOut(LCD_EN,0);
                 DisplayHandler.SM = DisplayHandler.NextSm;
             }
             break;
@@ -67,39 +65,39 @@ void DisplayHandler_Task(void)
         case LcdSetPinsHighNibble:
             if(DisplayHandler.OutputCntr != DisplayHandler.OutputNum)
             {
-                if(DisplayHandler.OutputBuffer[DisplayHandler.OutputCntr].DataOrCmd != 0) output_low(LCD_RS);
-                else output_high(LCD_RS);
+                if(DisplayHandler.OutputBuffer[DisplayHandler.OutputCntr].DataOrCmd != 0) GpioOut(LCD_RS,0);
+                else GpioOut(LCD_RS,1);
 
-                if((DisplayHandler.OutputBuffer[DisplayHandler.OutputCntr].data&0x80)!=0) output_high(LCD_D7);
-                else output_low(LCD_D7);
-                if((DisplayHandler.OutputBuffer[DisplayHandler.OutputCntr].data&0x40)!=0) output_high(LCD_D6);
-                else output_low(LCD_D6);
-                if((DisplayHandler.OutputBuffer[DisplayHandler.OutputCntr].data&0x20)!=0) output_high(LCD_D5);
-                else output_low(LCD_D5);
-                if((DisplayHandler.OutputBuffer[DisplayHandler.OutputCntr].data&0x10)!=0) output_high(LCD_D4);
-                else output_low(LCD_D4);
+                if((DisplayHandler.OutputBuffer[DisplayHandler.OutputCntr].data&0x80)!=0) GpioOut(LCD_D7,1);
+                else GpioOut(LCD_D7,0);
+                if((DisplayHandler.OutputBuffer[DisplayHandler.OutputCntr].data&0x40)!=0) GpioOut(LCD_D6,1);
+                else GpioOut(LCD_D6,0);
+                if((DisplayHandler.OutputBuffer[DisplayHandler.OutputCntr].data&0x20)!=0) GpioOut(LCD_D5,1);
+                else GpioOut(LCD_D5,0);
+                if((DisplayHandler.OutputBuffer[DisplayHandler.OutputCntr].data&0x10)!=0) GpioOut(LCD_D4,1);
+                else GpioOut(LCD_D4,0);
                 
                 DisplayHandler.NextSm = LcdSetPinsLowNibble;
-                output_high(LCD_EN);
+                GpioOut(LCD_EN,1);
                 DisplayHandler.SM = LcdEnter_Wait;
                 DisplayHandler.Timer = Ticks;
             }
             break;
             
         case LcdSetPinsLowNibble:
-            if((DisplayHandler.OutputBuffer[DisplayHandler.OutputCntr].data&0x8)!=0) output_high(LCD_D7);
-            else output_low(LCD_D7);
-            if((DisplayHandler.OutputBuffer[DisplayHandler.OutputCntr].data&0x4)!=0) output_high(LCD_D6);
-            else output_low(LCD_D6);
-            if((DisplayHandler.OutputBuffer[DisplayHandler.OutputCntr].data&0x2)!=0) output_high(LCD_D5);
-            else output_low(LCD_D5);
-            if((DisplayHandler.OutputBuffer[DisplayHandler.OutputCntr].data&0x1)!=0) output_high(LCD_D4);
-            else output_low(LCD_D4);
+            if((DisplayHandler.OutputBuffer[DisplayHandler.OutputCntr].data&0x8)!=0) GpioOut(LCD_D7,1);
+            else GpioOut(LCD_D7,0);
+            if((DisplayHandler.OutputBuffer[DisplayHandler.OutputCntr].data&0x4)!=0) GpioOut(LCD_D6,1);
+            else GpioOut(LCD_D6,0);
+            if((DisplayHandler.OutputBuffer[DisplayHandler.OutputCntr].data&0x2)!=0) GpioOut(LCD_D5,1);
+            else GpioOut(LCD_D5,0);
+            if((DisplayHandler.OutputBuffer[DisplayHandler.OutputCntr].data&0x1)!=0) GpioOut(LCD_D4,1);
+            else GpioOut(LCD_D4,0);
             
             DisplayHandler.OutputCntr++;
             if(DisplayHandler.OutputCntr >= LCD_BUFFER_SIZE) DisplayHandler.OutputCntr=0;
             DisplayHandler.NextSm = LcdSetPinsHighNibble;
-            output_high(LCD_EN);
+            GpioOut(LCD_EN,1);
             DisplayHandler.SM = LcdEnter_Wait;
             DisplayHandler.Timer = Ticks;
             

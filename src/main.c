@@ -8,8 +8,8 @@
 #include <main.h>
 #include "Ports/Ports.h"
 #include "Utilities/Utilities.h"
-#include "DisplayHandler/DisplayHandler.h"
-#include "../GettingTroubleCodes.h"
+//#include "DisplayHandler/DisplayHandler.h"
+//#include "../GettingTroubleCodes.h"
 
 /* Device will use the external crystal with 4x PLL */
 #pragma config OSC = HSPLL
@@ -19,18 +19,22 @@
 uint32 Ticks;
 uint8 abc;
 
-static dtRcon *const Rcon = 0xFD0;
-static dtIntCon *const IntCon = 0xFF2;
-static dtT2Con *const T2Con = 0xFCA;
-
+static dtRCON   *const RCON     = (dtRCON*)     0xFD0;
+static dtINTCON *const INTCON   = (dtINTCON*)   0xFF2;
+static dtT2CON  *const T2CON    = (dtT2CON*)    0xFCA;
+static dtPR2    *const PR2      = (dtPR2*)      0xFCB;
+static dtPIE1   *const PIE1     = (dtPIE1*)     0xF9D;
+static dtIPR1   *const IPR1     = (dtIPR1*)     0xF9F;
+static dtPIR1   *const PIR1     = (dtPIR1*)     0xF9E;
 
 
 void __interrupt(high_priority) ISRHandler(void)
 {
-    PIR1 &= 0b11111101;
+    PIR1->TMR2IF = 0;
     Tasking_TaskHandler();
     Ticks++;
-    if(abc)
+    GpioToggle(PINC4);
+    /*if(abc)
     {
         abc = 0;
         GpioOut(PINC4,1);
@@ -39,7 +43,7 @@ void __interrupt(high_priority) ISRHandler(void)
     {
         abc = 1;
         GpioOut(PINC4,0);
-    }
+    }*/
 }
 
 void __interrupt(low_priority) ISRHandler2(void)
@@ -53,14 +57,13 @@ void __interrupt(low_priority) ISRHandler2(void)
 /* Set up the 1 ms timer */
 void TimerInit(void)
 {
-    //T2CON = 0b00011111;
-    T2Con->T2CKPS = 0x3;
-    T2Con->T2OUTPS = 0x03;
-    T2Con->TMR2ON = 1;
-    PR2 = 124;
-    PIE1 |= 0b10;
-    IPR1 |= 0b10;
-    PIR1 &= 0b11111101;
+    T2CON->T2CKPS = 0x3;
+    T2CON->T2OUTPS = 0x04;
+    T2CON->TMR2ON = 1;
+    PR2->Period = 124;
+    PIE1->TMR2IE = 1;
+    IPR1->TMR2IP = 1;
+    PIR1->TMR2IF = 0;
 }
 
 void Toggle(void)
@@ -73,13 +76,13 @@ extern void KWPMsgHandler_Task(void);
 void main(void) 
 {
     /* Enable priority levels on interrupts */
-    Rcon->IPEN = 1;
+    RCON->IPEN = 1;
     
     /* Enable global interrupt */
-    IntCon->GIE_GIEH = 1;
+    INTCON->GIE_GIEH = 1;
     
     /* Enable peripheral interrupt. */
-    IntCon->PEIE_GIEL = 1;
+    INTCON->PEIE_GIEL = 1;
     
     TimerInit();
     UartHal_InitUart();
