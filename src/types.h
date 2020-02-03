@@ -8,7 +8,7 @@
 #ifndef TYPES_H
 #define	TYPES_H
 
-#include "../xc.h"
+//#include "../xc.h"
 
 #define true    1
 #define false   0

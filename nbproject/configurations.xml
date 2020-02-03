@@ -23,6 +23,10 @@
           <itemPath>src/KWPMsgHandler/KWPMsgHandler.h</itemPath>
           <itemPath>src/KWPMsgHandler/KWPMsgHandler_Types.h</itemPath>
         </logicalFolder>
+        <logicalFolder name="Ports" displayName="Ports" projectFiles="true">
+          <itemPath>src/Ports/Ports.h</itemPath>
+          <itemPath>src/Ports/Ports_Types.h</itemPath>
+        </logicalFolder>
         <logicalFolder name="Tasking" displayName="Tasking" projectFiles="true">
           <itemPath>src/Tasking/Tasking.h</itemPath>
           <itemPath>src/Tasking/Tasking_Types.h</itemPath>
@@ -60,6 +64,9 @@
                        displayName="KWPMsgHandler"
                        projectFiles="true">
           <itemPath>src/KWPMsgHandler/KWPMsgHandler.c</itemPath>
+        </logicalFolder>
+        <logicalFolder name="Ports" displayName="Ports" projectFiles="true">
+          <itemPath>src/Ports/Ports.c</itemPath>
         </logicalFolder>
         <logicalFolder name="Tasking" displayName="Tasking" projectFiles="true">
           <itemPath>src/Tasking/Tasking.c</itemPath>
@@ -206,7 +213,7 @@
       <PICkit2PlatformTool>
         <property key="pk2settings.3state" value="false"/>
         <property key="pk2settings.preserveee" value="false"/>
-        <property key="pk2settings.setvddvoltage" value="5,00"/>
+        <property key="pk2settings.setvddvoltage" value="5.00"/>
         <property key="pk2settings.userpgmexec" value="true"/>
         <property key="pk2settings.usetargetpower" value="false"/>
       </PICkit2PlatformTool>
@@ -226,6 +233,29 @@
         <property key="stack-type" value="compiled"/>
         <property key="user-pack-device-support" value=""/>
       </XC8-config-global>
+      <jlink>
+        <property key="AutoSelectMemRanges" value="auto"/>
+        <property key="communication.autoselectspeed" value="true"/>
+        <property key="communication.interface" value="4wire"/>
+        <property key="communication.speed" value="12"/>
+        <property key="memories.bootflash" value="true"/>
+        <property key="memories.configurationmemory" value="true"/>
+        <property key="memories.eeprom" value="true"/>
+        <property key="memories.id" value="true"/>
+        <property key="memories.instruction.ram" value="true"/>
+        <property key="memories.instruction.ram.end"
+                  value="${memories.instruction.ram.end.value}"/>
+        <property key="memories.instruction.ram.start"
+                  value="${memories.instruction.ram.start.value}"/>
+        <property key="memories.programmemory" value="true"/>
+        <property key="memories.programmemory.end" value="0x3fff"/>
+        <property key="memories.programmemory.start" value="0x0"/>
+        <property key="programoptions.preservebootflash" value="false"/>
+        <property key="programoptions.preserveprogramrange" value="false"/>
+        <property key="programoptions.preserveprogramrange.end" value="0x3fff"/>
+        <property key="programoptions.preserveprogramrange.start" value="0x0"/>
+        <property key="programoptions.resetafterprogram" value="true"/>
+      </jlink>
     </conf>
   </confs>
 </configurationDescriptor>

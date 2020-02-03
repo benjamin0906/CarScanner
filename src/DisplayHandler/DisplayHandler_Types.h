@@ -9,15 +9,16 @@
 #define	DISPLAYHANDLER_TYPES_H
 
 #include "types.h"
+#include "../Ports/Ports.h"
 #include "../Utilities/Utilities.h"
 
-#define LCD_RS  PIN_A3
-#define LCD_RW  PIN_A4
-#define LCD_EN  PIN_A5
-#define LCD_D4  PIN_A7
-#define LCD_D5  PIN_A6
-#define LCD_D6  PIN_C0
-#define LCD_D7  PIN_C1
+#define LCD_RS  PINC3
+#define LCD_RW  PINC1
+#define LCD_EN  PINC0
+#define LCD_D4  PINA5
+#define LCD_D5  PINB2
+#define LCD_D6  PINA4
+#define LCD_D7  PINA2
 
 #define LCD_BUFFER_SIZE 30
 
