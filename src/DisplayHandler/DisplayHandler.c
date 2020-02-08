@@ -1,13 +1,14 @@
 #include "DisplayHandler_Types.h"
+#include "mainUtils.h"
+#include "Tasking.h"
 
 dtDisplayHandler DisplayHandler;
 
-void LCDEnter()
-{
-    GpioOut(LCD_EN,1);
-    //delay_ms(10);
-    
-}
+void LCDInit(void);
+void DisplayHandler_Task(void);
+void LCDSendByte(uint8 data, uint8 CoM);
+void PutStr(uint8 *data, uint8 line);
+void LcdClear(void);
 
 void LCDSendByte(uint8 data, uint8 CoM)
 {
@@ -50,8 +51,11 @@ void LCDInit(void)
     
     LCDSendByte(0x01,1);
     LCDSendByte(0x03,1);
+    
+    Tasking_Add(1, &DisplayHandler_Task);
+    Tasking_Start(&DisplayHandler_Task);
 }
-extern uint32 Ticks;
+
 void DisplayHandler_Task(void)
 {
     switch(DisplayHandler.SM)
@@ -82,7 +86,7 @@ void DisplayHandler_Task(void)
                 DisplayHandler.NextSm = LcdSetPinsLowNibble;
                 GpioOut(LCD_EN,1);
                 DisplayHandler.SM = LcdEnter_Wait;
-                DisplayHandler.Timer = Ticks;
+                DisplayHandler.Timer = GetTicks();
             }
             break;
             
@@ -101,7 +105,7 @@ void DisplayHandler_Task(void)
             DisplayHandler.NextSm = LcdSetPinsHighNibble;
             GpioOut(LCD_EN,1);
             DisplayHandler.SM = LcdEnter_Wait;
-            DisplayHandler.Timer = Ticks;
+            DisplayHandler.Timer = GetTicks();
             
             break;
     }

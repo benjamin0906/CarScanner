@@ -17,11 +17,9 @@
           <itemPath>GettingTroubleCodes_Types.h</itemPath>
           <itemPath>GettingTroubleCodes.h</itemPath>
         </logicalFolder>
-        <logicalFolder name="KWPMsgHandler"
-                       displayName="KWPMsgHandler"
-                       projectFiles="true">
-          <itemPath>src/KWPMsgHandler/KWPMsgHandler.h</itemPath>
-          <itemPath>src/KWPMsgHandler/KWPMsgHandler_Types.h</itemPath>
+        <logicalFolder name="KLineHAL" displayName="KLineHAL" projectFiles="true">
+          <itemPath>src/KLineHAL/KLineHAL.h</itemPath>
+          <itemPath>src/KLineHAL/KLineHAL_Types.h</itemPath>
         </logicalFolder>
         <logicalFolder name="Ports" displayName="Ports" projectFiles="true">
           <itemPath>src/Ports/Ports.h</itemPath>
@@ -40,6 +38,7 @@
         </logicalFolder>
         <itemPath>src/main.h</itemPath>
         <itemPath>src/types.h</itemPath>
+        <itemPath>src/mainUtils.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
@@ -60,10 +59,8 @@
                        projectFiles="true">
           <itemPath>GettingTroubleCodes.c</itemPath>
         </logicalFolder>
-        <logicalFolder name="KWPMsgHandler"
-                       displayName="KWPMsgHandler"
-                       projectFiles="true">
-          <itemPath>src/KWPMsgHandler/KWPMsgHandler.c</itemPath>
+        <logicalFolder name="KLineHAL" displayName="KLineHAL" projectFiles="true">
+          <itemPath>src/KLineHAL/KLineHAL.c</itemPath>
         </logicalFolder>
         <logicalFolder name="Ports" displayName="Ports" projectFiles="true">
           <itemPath>src/Ports/Ports.c</itemPath>

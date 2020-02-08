@@ -11,7 +11,6 @@
 #include "types.h"
 #include "Tasking.h"
 #include "UartHal/UartHal.h"
-#include "KWPMsgHandler/KWPMsgHandler.h"
 
 typedef struct
 {

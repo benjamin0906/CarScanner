@@ -27,6 +27,7 @@ static dtPIE1   *const PIE1     = (dtPIE1*)     0xF9D;
 static dtIPR1   *const IPR1     = (dtIPR1*)     0xF9F;
 static dtPIR1   *const PIR1     = (dtPIR1*)     0xF9E;
 
+uint32 GetTicks(void);
 
 void __interrupt(high_priority) ISRHandler(void)
 {
@@ -34,24 +35,11 @@ void __interrupt(high_priority) ISRHandler(void)
     Tasking_TaskHandler();
     Ticks++;
     GpioToggle(PINC4);
-    /*if(abc)
-    {
-        abc = 0;
-        GpioOut(PINC4,1);
-    }
-    else
-    {
-        abc = 1;
-        GpioOut(PINC4,0);
-    }*/
 }
 
 void __interrupt(low_priority) ISRHandler2(void)
 {
-    //LATA ^= 0b100;
     UartHal_Handler();
-    
-    
 }
 
 /* Set up the 1 ms timer */
@@ -66,11 +54,6 @@ void TimerInit(void)
     PIR1->TMR2IF = 0;
 }
 
-void Toggle(void)
-{
-    //LATA ^= 0b10;
-}
-
 extern void LCDInit(void);
 extern void KWPMsgHandler_Task(void);
 void main(void) 
@@ -82,36 +65,27 @@ void main(void)
     /* Enable priority levels on interrupts */
     RCON->IPEN = 1;
     
-    /* Enable global interrupt */
+    /* Enable globalrr interrupt */
     INTCON->GIE_GIEH = 1;
     
     /* Enable peripheral interrupt. */
     INTCON->PEIE_GIEL = 1;
     
+    /* Start the tasking timer */
     TimerInit();
-    UartHal_InitUart();
     
+    /* Initialise the Red led */
     GpioDir(PINC4, 0);
     
+    //UartHal_InitUart();
+    
     LCDInit();
-    //Tasking_Add(100, &Toggle);
-    //Tasking_Start(&Toggle);
-    
-    //Tasking_Add(1, &KWPMsgHandler_Task);
-    //Tasking_Start(&KWPMsgHandler_Task);
-    
-    Tasking_Add(1, &DisplayHandler_Task);
-    Tasking_Start(&DisplayHandler_Task);
-    
             
     //Tasking_Add(1000, &GettingTroubleCodes_Task);
     // Tasking_Start(&GettingTroubleCodes_Task);
-    //KWPMsgHandler_Task();*/
-    
-    
     
     uint8 del1,del2;
-    uint8 c[] = "Szia! :)";
+    uint8 c[] = "Sziaa! :)";
     PutStr(&c,0);
     //LcdClear();
     while(1)
@@ -119,5 +93,10 @@ void main(void)
         for(del1=0; del1<255;del1++) for(del2=0;del2<255;del2++);
         
     }
+}
+
+uint32 GetTicks(void)
+{
+    return Ticks;
 }
 
