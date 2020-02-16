@@ -86,6 +86,7 @@
   <sourceRootList>
     <Elem></Elem>
     <Elem>src/DisplayHandler</Elem>
+    <Elem>src/Ports</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>

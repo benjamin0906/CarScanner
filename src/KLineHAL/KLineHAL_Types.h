@@ -10,5 +10,20 @@
 
 #include "types.h"
 
+typedef enum
+{
+    Uninited,
+    StartInit,
+    FirstTwoBit,
+    ThirdFourthBit,
+    FifthSixthBit,
+    SeventhEighth,
+    StopBit,
+    WaitForStartBit,
+    WaitState,
+    Inited,        
+} dtKLineState;
+
+
 #endif	/* KLINEHAL_TYPES_H */
 

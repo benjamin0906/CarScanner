@@ -31,8 +31,8 @@ const dtGPIO PINC5  = {0x2,0x5};
 const dtGPIO PINC6  = {0x2,0x6};
 const dtGPIO PINC7  = {0x2,0x7};
 
-
 void GpioOut(dtGPIO GPIO, uint8 State);
+uint8 GpioIn(dtGPIO GPIO);
 void GpioToggle(dtGPIO GPIO);
 void GpioDir(dtGPIO GPIO, uint8 Dir);
 
@@ -71,4 +71,11 @@ void GpioToggle(dtGPIO GPIO)
 {
     if((*PORTs[GPIO.Port] & (1<<GPIO.Pin)) != 0) *LATs[GPIO.Port] &= ~(1<<GPIO.Pin);
     else *LATs[GPIO.Port] |= (1<<GPIO.Pin);
+}
+
+uint8 GpioIn(dtGPIO GPIO)
+{
+    uint8 ret = 0;
+    if((*PORTs[GPIO.Port] & (1<<GPIO.Pin)) != 0) ret = 1;
+    return ret;
 }

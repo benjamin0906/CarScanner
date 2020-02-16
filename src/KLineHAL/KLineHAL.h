@@ -8,16 +8,8 @@
 #ifndef KLINEHAL_H
 #define	KLINEHAL_H
 
-#ifdef	__cplusplus
-extern "C" {
-#endif
-
-
-
-
-#ifdef	__cplusplus
-}
-#endif
+extern void KLineHal_Init(void);
+extern void KLineHal_StartInit(void);
 
 #endif	/* KLINEHAL_H */
 

@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=src/DisplayHandler/DisplayHandler.c GettingTroubleCodes.c src/Ports/Ports.c src/Tasking/Tasking.c src/UartHal/UartHal.c Utilities.c src/main.c src/KLineHAL/KLineHAL.c
+SOURCEFILES_QUOTED_IF_SPACED=src/DisplayHandler/DisplayHandler.c GettingTroubleCodes.c src/KLineHAL/KLineHAL.c src/Ports/Ports.c src/Tasking/Tasking.c src/UartHal/UartHal.c Utilities.c src/main.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/src/DisplayHandler/DisplayHandler.p1 ${OBJECTDIR}/GettingTroubleCodes.p1 ${OBJECTDIR}/src/Ports/Ports.p1 ${OBJECTDIR}/src/Tasking/Tasking.p1 ${OBJECTDIR}/src/UartHal/UartHal.p1 ${OBJECTDIR}/Utilities.p1 ${OBJECTDIR}/src/main.p1 ${OBJECTDIR}/src/KLineHAL/KLineHAL.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/src/DisplayHandler/DisplayHandler.p1.d ${OBJECTDIR}/GettingTroubleCodes.p1.d ${OBJECTDIR}/src/Ports/Ports.p1.d ${OBJECTDIR}/src/Tasking/Tasking.p1.d ${OBJECTDIR}/src/UartHal/UartHal.p1.d ${OBJECTDIR}/Utilities.p1.d ${OBJECTDIR}/src/main.p1.d ${OBJECTDIR}/src/KLineHAL/KLineHAL.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/src/DisplayHandler/DisplayHandler.p1 ${OBJECTDIR}/GettingTroubleCodes.p1 ${OBJECTDIR}/src/KLineHAL/KLineHAL.p1 ${OBJECTDIR}/src/Ports/Ports.p1 ${OBJECTDIR}/src/Tasking/Tasking.p1 ${OBJECTDIR}/src/UartHal/UartHal.p1 ${OBJECTDIR}/Utilities.p1 ${OBJECTDIR}/src/main.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/src/DisplayHandler/DisplayHandler.p1.d ${OBJECTDIR}/GettingTroubleCodes.p1.d ${OBJECTDIR}/src/KLineHAL/KLineHAL.p1.d ${OBJECTDIR}/src/Ports/Ports.p1.d ${OBJECTDIR}/src/Tasking/Tasking.p1.d ${OBJECTDIR}/src/UartHal/UartHal.p1.d ${OBJECTDIR}/Utilities.p1.d ${OBJECTDIR}/src/main.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/src/DisplayHandler/DisplayHandler.p1 ${OBJECTDIR}/GettingTroubleCodes.p1 ${OBJECTDIR}/src/Ports/Ports.p1 ${OBJECTDIR}/src/Tasking/Tasking.p1 ${OBJECTDIR}/src/UartHal/UartHal.p1 ${OBJECTDIR}/Utilities.p1 ${OBJECTDIR}/src/main.p1 ${OBJECTDIR}/src/KLineHAL/KLineHAL.p1
+OBJECTFILES=${OBJECTDIR}/src/DisplayHandler/DisplayHandler.p1 ${OBJECTDIR}/GettingTroubleCodes.p1 ${OBJECTDIR}/src/KLineHAL/KLineHAL.p1 ${OBJECTDIR}/src/Ports/Ports.p1 ${OBJECTDIR}/src/Tasking/Tasking.p1 ${OBJECTDIR}/src/UartHal/UartHal.p1 ${OBJECTDIR}/Utilities.p1 ${OBJECTDIR}/src/main.p1
 
 # Source Files
-SOURCEFILES=src/DisplayHandler/DisplayHandler.c GettingTroubleCodes.c src/Ports/Ports.c src/Tasking/Tasking.c src/UartHal/UartHal.c Utilities.c src/main.c src/KLineHAL/KLineHAL.c
+SOURCEFILES=src/DisplayHandler/DisplayHandler.c GettingTroubleCodes.c src/KLineHAL/KLineHAL.c src/Ports/Ports.c src/Tasking/Tasking.c src/UartHal/UartHal.c Utilities.c src/main.c
 
 
 
@@ -110,6 +110,14 @@ ${OBJECTDIR}/GettingTroubleCodes.p1: GettingTroubleCodes.c  nbproject/Makefile-$
 	@-${MV} ${OBJECTDIR}/GettingTroubleCodes.d ${OBJECTDIR}/GettingTroubleCodes.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/GettingTroubleCodes.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/src/KLineHAL/KLineHAL.p1: src/KLineHAL/KLineHAL.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/src/KLineHAL" 
+	@${RM} ${OBJECTDIR}/src/KLineHAL/KLineHAL.p1.d 
+	@${RM} ${OBJECTDIR}/src/KLineHAL/KLineHAL.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1    -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"src" -I"src/Tasking" -I"src/UartHal" -I"src/KWPMsgHandler" -I"src/DisplayHandler" -I"src/Functionalities" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/src/KLineHAL/KLineHAL.p1 src/KLineHAL/KLineHAL.c 
+	@-${MV} ${OBJECTDIR}/src/KLineHAL/KLineHAL.d ${OBJECTDIR}/src/KLineHAL/KLineHAL.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/src/KLineHAL/KLineHAL.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 ${OBJECTDIR}/src/Ports/Ports.p1: src/Ports/Ports.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/src/Ports" 
 	@${RM} ${OBJECTDIR}/src/Ports/Ports.p1.d 
@@ -150,14 +158,6 @@ ${OBJECTDIR}/src/main.p1: src/main.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/src/main.d ${OBJECTDIR}/src/main.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/src/main.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/src/KLineHAL/KLineHAL.p1: src/KLineHAL/KLineHAL.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/src/KLineHAL" 
-	@${RM} ${OBJECTDIR}/src/KLineHAL/KLineHAL.p1.d 
-	@${RM} ${OBJECTDIR}/src/KLineHAL/KLineHAL.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1    -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"src" -I"src/Tasking" -I"src/UartHal" -I"src/KWPMsgHandler" -I"src/DisplayHandler" -I"src/Functionalities" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/src/KLineHAL/KLineHAL.p1 src/KLineHAL/KLineHAL.c 
-	@-${MV} ${OBJECTDIR}/src/KLineHAL/KLineHAL.d ${OBJECTDIR}/src/KLineHAL/KLineHAL.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/src/KLineHAL/KLineHAL.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
 else
 ${OBJECTDIR}/src/DisplayHandler/DisplayHandler.p1: src/DisplayHandler/DisplayHandler.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/src/DisplayHandler" 
@@ -174,6 +174,14 @@ ${OBJECTDIR}/GettingTroubleCodes.p1: GettingTroubleCodes.c  nbproject/Makefile-$
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"src" -I"src/Tasking" -I"src/UartHal" -I"src/KWPMsgHandler" -I"src/DisplayHandler" -I"src/Functionalities" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/GettingTroubleCodes.p1 GettingTroubleCodes.c 
 	@-${MV} ${OBJECTDIR}/GettingTroubleCodes.d ${OBJECTDIR}/GettingTroubleCodes.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/GettingTroubleCodes.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/src/KLineHAL/KLineHAL.p1: src/KLineHAL/KLineHAL.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/src/KLineHAL" 
+	@${RM} ${OBJECTDIR}/src/KLineHAL/KLineHAL.p1.d 
+	@${RM} ${OBJECTDIR}/src/KLineHAL/KLineHAL.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"src" -I"src/Tasking" -I"src/UartHal" -I"src/KWPMsgHandler" -I"src/DisplayHandler" -I"src/Functionalities" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/src/KLineHAL/KLineHAL.p1 src/KLineHAL/KLineHAL.c 
+	@-${MV} ${OBJECTDIR}/src/KLineHAL/KLineHAL.d ${OBJECTDIR}/src/KLineHAL/KLineHAL.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/src/KLineHAL/KLineHAL.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 ${OBJECTDIR}/src/Ports/Ports.p1: src/Ports/Ports.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/src/Ports" 
@@ -214,14 +222,6 @@ ${OBJECTDIR}/src/main.p1: src/main.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"src" -I"src/Tasking" -I"src/UartHal" -I"src/KWPMsgHandler" -I"src/DisplayHandler" -I"src/Functionalities" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/src/main.p1 src/main.c 
 	@-${MV} ${OBJECTDIR}/src/main.d ${OBJECTDIR}/src/main.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/src/main.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/src/KLineHAL/KLineHAL.p1: src/KLineHAL/KLineHAL.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/src/KLineHAL" 
-	@${RM} ${OBJECTDIR}/src/KLineHAL/KLineHAL.p1.d 
-	@${RM} ${OBJECTDIR}/src/KLineHAL/KLineHAL.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c    -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -I"src" -I"src/Tasking" -I"src/UartHal" -I"src/KWPMsgHandler" -I"src/DisplayHandler" -I"src/Functionalities" -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-download -mdefault-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/src/KLineHAL/KLineHAL.p1 src/KLineHAL/KLineHAL.c 
-	@-${MV} ${OBJECTDIR}/src/KLineHAL/KLineHAL.d ${OBJECTDIR}/src/KLineHAL/KLineHAL.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/src/KLineHAL/KLineHAL.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 

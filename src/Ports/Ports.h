@@ -14,6 +14,7 @@ typedef struct
     uint8   Pin:4;
 } dtGPIO;
 
+extern uint8 GpioIn(dtGPIO GPIO);
 extern void GpioOut(dtGPIO GPIO, uint8 State);
 extern void GpioDir(dtGPIO GPIO, uint8 Dir);
 extern void GpioToggle(dtGPIO GPIO);

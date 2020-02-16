@@ -10,6 +10,7 @@
 #include "Utilities/Utilities.h"
 #include "DisplayHandler/DisplayHandler.h"
 //#include "../GettingTroubleCodes.h"
+#include "KLineHAL/KLineHAL.h"
 
 /* Device will use the external crystal with 4x PLL */
 #pragma config OSC = HSPLL
@@ -31,10 +32,9 @@ uint32 GetTicks(void);
 
 void __interrupt(high_priority) ISRHandler(void)
 {
-    PIR1->TMR2IF = 0;
     Tasking_TaskHandler();
     Ticks++;
-    GpioToggle(PINC4);
+    PIR1->TMR2IF = 0;
 }
 
 void __interrupt(low_priority) ISRHandler2(void)
@@ -60,7 +60,8 @@ void main(void)
 {
     {
         uint8 delay;
-        for(delay = 0; delay < 250; delay++);
+        uint8 delay2;
+        for(delay = 0; delay < 250; delay++) for(delay2 = 0; delay2 < 250; delay2 ++);
     }
     /* Enable priority levels on interrupts */
     RCON->IPEN = 1;
@@ -76,16 +77,26 @@ void main(void)
     
     /* Initialise the Red led */
     GpioDir(PINC4, 0);
+    GpioOut(PINC4, 1);
+    
+    KLineHal_Init();
+    
+    {
+        uint8 delay;
+        uint8 delay2;
+        for(delay = 0; delay < 250; delay++) for(delay2 = 0; delay2 < 250; delay2 ++);
+    }
+    KLineHal_StartInit();//*/
     
     //UartHal_InitUart();
     
-    LCDInit();
+    //LCDInit();
             
     //Tasking_Add(1000, &GettingTroubleCodes_Task);
     // Tasking_Start(&GettingTroubleCodes_Task);
     
     uint8 del1,del2;
-    uint8 c[] = "Sziaa! :)";
+    uint8 c[] = "Sziaaa! :)";
     PutStr(&c,0);
     //LcdClear();
     while(1)

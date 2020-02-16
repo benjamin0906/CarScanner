@@ -15,6 +15,7 @@
             <sourceRootList>
                 <sourceRootElem/>
                 <sourceRootElem>src/DisplayHandler</sourceRootElem>
+                <sourceRootElem>src/Ports</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

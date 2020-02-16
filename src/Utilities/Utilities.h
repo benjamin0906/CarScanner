@@ -9,8 +9,9 @@
 #define	UTILITIES_H
 
 #include "../types.h"
+#include "mainUtils.h"
 
-extern uint8 IsPassed(uint8 Time, uint8 limit);
+extern uint32 IsPassed(uint32 Time, uint32 limit);
 
 #endif	/* UTILITIES_H */
 
